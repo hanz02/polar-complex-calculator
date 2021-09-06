@@ -1,11 +1,11 @@
 # depslib dependency file v1.0
-1630860982 source:c:\users\user\desktop\castle\college disted\subject sem\sem 7\prog paradigm\assignment 1\polar_complex_converter\polarcoord.cpp
+1630951673 source:c:\users\user\desktop\castle\college disted\subject sem\sem 7\prog paradigm\assignment 1\polar_complex_converter\polarcoord.cpp
 	"PolarCoord.h"
 	"ComplexNumber.h"
 	<iostream>
 	<cmath>
 
-1630859789 c:\users\user\desktop\castle\college disted\subject sem\sem 7\prog paradigm\assignment 1\polar_complex_converter\polarcoord.h
+1630947178 c:\users\user\desktop\castle\college disted\subject sem\sem 7\prog paradigm\assignment 1\polar_complex_converter\polarcoord.h
 	"ComplexNumber.h"
 	<string>
 
@@ -13,7 +13,7 @@
 	"PolarCoord.h"
 	<string>
 
-1630862910 source:c:\users\user\desktop\castle\college disted\subject sem\sem 7\prog paradigm\assignment 1\polar_complex_converter\main.cpp
+1630951752 source:c:\users\user\desktop\castle\college disted\subject sem\sem 7\prog paradigm\assignment 1\polar_complex_converter\main.cpp
 	"ComplexNumber.h"
 	"PolarCoord.h"
 	"ConversionMenu.h"
@@ -28,7 +28,7 @@
 
 1630941909 c:\users\user\desktop\castle\college disted\subject sem\sem 7\prog paradigm\assignment 1\polar_complex_converter\conversionmenu.h
 
-1630862831 source:c:\users\user\desktop\castle\college disted\subject sem\sem 7\prog paradigm\assignment 1\polar_complex_converter\conversionmenu.cpp
+1630942442 source:c:\users\user\desktop\castle\college disted\subject sem\sem 7\prog paradigm\assignment 1\polar_complex_converter\conversionmenu.cpp
 	"PolarCoord.h"
 	"ComplexNumber.h"
 	"ConversionMenu.h"
