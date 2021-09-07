@@ -7,6 +7,17 @@
 
 using namespace std;
 
+void checkValidInputStream(istream &in) throw(invalid_argument)
+{
+
+    if(cin.fail()) // or if(cin.fail()), if user typed wrong input
+    {
+        cin.clear();
+        cin.ignore();
+        throw invalid_argument("Inavlid Input Provided, please input the correct data type");
+    }
+
+}
 
 void conversionMenu(char &user_input, ComplexNumber &cn, PolarCoord &pc)
 {
@@ -31,6 +42,7 @@ void conversionMenu(char &user_input, ComplexNumber &cn, PolarCoord &pc)
             double b;
 
             opt_to_polarCoord(a, b);
+            user_input = '0';
 
             break;
 
@@ -41,6 +53,7 @@ void conversionMenu(char &user_input, ComplexNumber &cn, PolarCoord &pc)
             double deg;
 
             opt_to_complexNumber(r, deg);
+            user_input = '0';
 
             break;
 
@@ -53,6 +66,7 @@ void conversionMenu(char &user_input, ComplexNumber &cn, PolarCoord &pc)
         default:
             cout << "\nIncorrect Option Specified (Please choose option 1 to 2) \n";
             system("pause");
+            user_input = '0';
             cout << "\n=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=\n";
             break;
         }
@@ -62,45 +76,38 @@ void conversionMenu(char &user_input, ComplexNumber &cn, PolarCoord &pc)
 
 void opt_to_polarCoord(double a, double b)
 {
-    ComplexNumber cn;
-    PolarCoord pc;
-
-    cout << "\nEnter your complex number (a + bi) form for conversion \n";
-    cout << "a: ";
-    cin >> a;
-
-    if(!cin) // or if(cin.fail()), if user typed wrong input
+    try
     {
-        cin.clear();
-        cin.ignore();
-        cout << "\nInvalid Input, please enter a number" <<endl;
-        system("pause");
-    }
-    else
-    {
+        ComplexNumber cn;
+        PolarCoord pc;
+
+        cout << "\nEnter your complex number (a + bi) form for conversion \n";
+        cout << "a: ";
+        cin >> a;
+
+        checkValidInputStream(cin);
+
         cout << "b: ";
         cin >> b;
 
-        if(!cin) // or if(cin.fail())
-        {
-            cin.clear();
-            cin.ignore();
-            cout << "\nInvalid Input, please enter a number" <<endl;
-            system("pause");
-        }
-        else
-        {
-            cn.setA(a);
-            cn.setB(b);
+        checkValidInputStream(cin);
 
-            pc = cn.ToPolarCoord();
+        cn.setA(a);
+        cn.setB(b);
 
-            cout << "\nThe polar coordinate of " << a << " + " << b << "i is : " << pc.ToString() <<endl;
-            system("pause");
-            cout <<endl;
-            cout << "\n=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=\n";
+        pc = cn.ToPolarCoord();
 
-        }
+        cout << "\nThe polar coordinate of " << a << " + " << b << "i is : " << pc.ToString() <<endl;
+        system("pause");
+        cout <<endl;
+        cout << "\n=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=\n";
+
+    }
+    catch (invalid_argument e)
+    {
+        cout << "\nInvalid input, please input a number\n";
+        system("pause");
+        cout << "\n=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=\n";
     }
 }
 
@@ -109,43 +116,41 @@ void opt_to_complexNumber(double r, double deg)
     ComplexNumber cn;
     PolarCoord pc;
 
-    cout << "\nEnter your polar coordinate (r ¡Ï deg) for conversion \n";
-    cout << "r (radius): ";
-    cin >> r;
+    try
+    {
+        cout << "\nEnter your polar coordinate (r ¡Ï deg) for conversion \n";
+        cout << "r (radius): ";
+        cin >> r;
 
-    if(!cin) // or if(cin.fail()), if user typed wrong input
-    {
-        cin.clear();
-        cin.ignore();
-        cout << "\nInvalid Input, please enter a number" <<endl;
-        system("pause");
-    }
-    else
-    {
+        checkValidInputStream(cin);
+
         cout << "deg (angular coordinate): ";
         cin >> deg;
 
-        if(!cin) // or if(cin.fail())
-        {
-            cin.clear();
-            cin.ignore();
-            cout << "\nInvalid Input, please enter a number" <<endl;
-            system("pause");
-        }
-        else
-        {
-            pc.setRadius(r);
-            pc.setDegree(deg);
+        checkValidInputStream(cin);
 
-            cn = pc.ToComplexNum();
+        pc.setRadius(r);
+        pc.setDegree(deg);
 
-            cout << "\nThe complex number (rectangular coordinate) of " << r << " , " << deg << " is : " << cn.ToString() <<endl;
-            system("pause");
-            cout <<endl;
-            cout << "\n=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=\n";
-        }
+        cn = pc.ToComplexNum();
+
+        cout << "\nThe complex number (rectangular coordinate) of " << r << " , " << deg << " is : " << cn.ToString() <<endl;
+        system("pause");
+        cout <<endl;
+        cout << "\n=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=\n";
+
     }
+    catch (invalid_argument e)
+    {
+        cout << "\nInvalid input, please input a number\n";
+        system("pause");
+        cout << "\n=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=\n";
+    }
+
+
 }
+
+
 
 void equivalenceMenu(char &user_input)
 {
@@ -154,41 +159,59 @@ void equivalenceMenu(char &user_input)
 
     double r, deg, a, b;
 
-    cout << "\n\n====== EQUIVALENCE CHECK ======\n";
-    cout << "\nChoose an operation to perform below (Choose 1 to 3)\n\n";
-    cout << "1. Check two equal Polar Coordinates\n";
-    cout << "2. Check equivalence between Polar Coordinate and Complex Number\n";
-    cout << "3. Return\n";
-
-    cout << "\n> ";
-    cin >> user_input;
-
-    switch(user_input)
+    do
     {
+        cout << "\n\n====== EQUIVALENCE CHECK ======\n";
+        cout << "\nChoose an operation to perform below (Choose 1 to 3)\n\n";
+        cout << "1. Check two equal Polar Coordinates\n";
+        cout << "2. Check equivalence between Polar Coordinate and Complex Number\n";
+        cout << "3. Return\n";
+
+        cout << "\n> ";
+        cin >> user_input;
+
+        switch(user_input)
+        {
         // check polar coord and polar coord equals
         case '1':
-            cout << "\nPlease enter two polar coordinate (r, deg) to check if they are equal. \n\n";
+            try
+            {
+                cout << "\nPlease enter two polar coordinate (r, deg) to check if they are equal. \n\n";
 
-            cout << "--- 1st Coordinate --- \n";
-            cout << "r (radius): ";
-            cin >> r;
-            pc.setRadius(r);
+                cout << "--- 1st Coordinate --- \n";
+                cout << "r (radius): ";
+                cin >> r;
+                checkValidInputStream(cin);
 
-            cout << "deg (degree angle): ";
-            cin >> deg;
-            pc.setRadius(deg);
+                pc.setRadius(r);
 
-            cout << "--- 2nd Coordinate --- \n";
-            cout << "r (radius): ";
-            cin >> r;
-            pc1.setRadius(r);
+                cout << "deg (degree angle): ";
+                cin >> deg;
+                checkValidInputStream(cin);
+                pc.setRadius(deg);
 
-            cout << "deg (degree angle): ";
-            cin >> deg;
-            pc1.setRadius(deg);
+                cout << "\n--- 2nd Coordinate --- \n";
+                cout << "r (radius): ";
+                cin >> r;
+                checkValidInputStream(cin);
+                pc1.setRadius(r);
 
-            (pc1 == pc) ? cout << "The two polar coordinates are equal\n" : cout << "The two polar coordinates are not equal \n";
-            system("pause");
+                cout << "deg (degree angle): ";
+                cin >> deg;
+                checkValidInputStream(cin);
+                pc1.setRadius(deg);
+
+                (pc1 == pc) ? cout << "\nThe two polar coordinates are equal\n" : cout << "The two polar coordinates are not equal \n";
+                system("pause");
+                cout << "\n=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=\n";
+
+            }
+            catch (invalid_argument e)
+            {
+                cout << "\nInvalid input, please input a number\n";
+                system("pause");
+                cout << "\n=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=\n";
+            }
 
             break;
 
@@ -208,6 +231,7 @@ void equivalenceMenu(char &user_input)
             system("pause");
             cout << "\n=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=\n";
             break;
+        }
     }
     while(user_input != '3');
 
