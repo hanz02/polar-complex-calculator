@@ -1,13 +1,13 @@
 #include "ComplexNumber.h"
 #include "PolarCoord.h"
-#include "ConversionMenu.h"
+#include "SubMenus.h"
 
 #include <iostream>
 
 using namespace std;
 
-ComplexNumber cn1;
-PolarCoord pc1(-2, 210);
+ComplexNumber cn;
+PolarCoord pc;
 
 int main()
 {
@@ -32,13 +32,14 @@ int main()
         // conversion
         case '1':
             cout << "\n=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=\n";
-            conversionMenu(user_opt);
+            conversionMenu(user_opt, cn, pc);
+            user_input = '0';
             break;
 
         case '2':
         {
-            PolarCoord pc2(2, 30);
-            pc2.is_equal(pc1) ? cout << "yay" : cout << "bruh";
+            equivalenceMenu(user_opt);
+            user_input = '0';
             break;
         }
 
@@ -54,7 +55,7 @@ int main()
         }
 
     }
-    while (user_opt != '4');
+    while (user_opt != '3');
 
     return 0;
 }

@@ -7,13 +7,14 @@
 
 using namespace std;
 
+
 void conversionMenu(char &user_input, ComplexNumber &cn, PolarCoord &pc)
 {
     do
     {
 
         cout << "\n\n====== CONVERSION ======\n";
-        cout << "\nChoose a conversion to perform below (Choose 1 to 2)\n\n";
+        cout << "\nChoose a conversion to perform below (Choose 1 to 3)\n\n";
         cout << "1. Complex Numbers to Polar Coordinates\n";
         cout << "2. Polar Coordinates to Complex Numbers\n";
         cout << "3. Return\n";
@@ -138,11 +139,78 @@ void opt_to_complexNumber(double r, double deg)
 
             cn = pc.ToComplexNum();
 
-            cout << "\nThe complex number (rectangular coordinate) of " << r << " ¡Ï " << deg << " is : " << cn.ToString() <<endl;
+            cout << "\nThe complex number (rectangular coordinate) of " << r << " , " << deg << " is : " << cn.ToString() <<endl;
             system("pause");
             cout <<endl;
             cout << "\n=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=\n";
-
         }
     }
 }
+
+void equivalenceMenu(char &user_input)
+{
+    ComplexNumber cn;
+    PolarCoord pc, pc1;
+
+    double r, deg, a, b;
+
+    cout << "\n\n====== EQUIVALENCE CHECK ======\n";
+    cout << "\nChoose an operation to perform below (Choose 1 to 3)\n\n";
+    cout << "1. Check two equal Polar Coordinates\n";
+    cout << "2. Check equivalence between Polar Coordinate and Complex Number\n";
+    cout << "3. Return\n";
+
+    cout << "\n> ";
+    cin >> user_input;
+
+    switch(user_input)
+    {
+        // check polar coord and polar coord equals
+        case '1':
+            cout << "\nPlease enter two polar coordinate (r, deg) to check if they are equal. \n\n";
+
+            cout << "--- 1st Coordinate --- \n";
+            cout << "r (radius): ";
+            cin >> r;
+            pc.setRadius(r);
+
+            cout << "deg (degree angle): ";
+            cin >> deg;
+            pc.setRadius(deg);
+
+            cout << "--- 2nd Coordinate --- \n";
+            cout << "r (radius): ";
+            cin >> r;
+            pc1.setRadius(r);
+
+            cout << "deg (degree angle): ";
+            cin >> deg;
+            pc1.setRadius(deg);
+
+            (pc1 == pc) ? cout << "The two polar coordinates are equal\n" : cout << "The two polar coordinates are not equal \n";
+            system("pause");
+
+            break;
+
+        // check polar coord and complex number equals
+        case '2':
+
+            break;
+
+        case '3':
+            cout << "\nReturning to MAIN MENU.." <<endl;
+            system("pause");
+            cout << "\n=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=\n";
+            break;
+
+        default:
+            cout << "\nIncorrect Option Specified (Please choose option 1 to 3) \n";
+            system("pause");
+            cout << "\n=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=\n";
+            break;
+    }
+    while(user_input != '3');
+
+}
+
+

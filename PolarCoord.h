@@ -13,7 +13,7 @@ class PolarCoord
         PolarCoord(double r, double deg);
 
         ComplexNumber ToComplexNum();
-        bool is_equal(PolarCoord pc);
+        bool operator==(PolarCoord const pc_input);
 
         double getRadius();
         double getDegree();

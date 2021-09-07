@@ -1,11 +1,11 @@
 # depslib dependency file v1.0
-1630951673 source:c:\users\user\desktop\castle\college disted\subject sem\sem 7\prog paradigm\assignment 1\polar_complex_converter\polarcoord.cpp
+1631030690 source:c:\users\user\desktop\castle\college disted\subject sem\sem 7\prog paradigm\assignment 1\polar_complex_converter\polarcoord.cpp
 	"PolarCoord.h"
 	"ComplexNumber.h"
 	<iostream>
 	<cmath>
 
-1630947178 c:\users\user\desktop\castle\college disted\subject sem\sem 7\prog paradigm\assignment 1\polar_complex_converter\polarcoord.h
+1631030027 c:\users\user\desktop\castle\college disted\subject sem\sem 7\prog paradigm\assignment 1\polar_complex_converter\polarcoord.h
 	"ComplexNumber.h"
 	<string>
 
@@ -13,10 +13,10 @@
 	"PolarCoord.h"
 	<string>
 
-1630951752 source:c:\users\user\desktop\castle\college disted\subject sem\sem 7\prog paradigm\assignment 1\polar_complex_converter\main.cpp
+1631034629 source:c:\users\user\desktop\castle\college disted\subject sem\sem 7\prog paradigm\assignment 1\polar_complex_converter\main.cpp
 	"ComplexNumber.h"
 	"PolarCoord.h"
-	"ConversionMenu.h"
+	"SubMenus.h"
 	<iostream>
 
 1630860922 source:c:\users\user\desktop\castle\college disted\subject sem\sem 7\prog paradigm\assignment 1\polar_complex_converter\complexnumber.cpp
@@ -28,10 +28,19 @@
 
 1630941909 c:\users\user\desktop\castle\college disted\subject sem\sem 7\prog paradigm\assignment 1\polar_complex_converter\conversionmenu.h
 
-1630942442 source:c:\users\user\desktop\castle\college disted\subject sem\sem 7\prog paradigm\assignment 1\polar_complex_converter\conversionmenu.cpp
+1631030149 source:c:\users\user\desktop\castle\college disted\subject sem\sem 7\prog paradigm\assignment 1\polar_complex_converter\conversionmenu.cpp
 	"PolarCoord.h"
 	"ComplexNumber.h"
-	"ConversionMenu.h"
+	"SubMenus.h"
+	<iostream>
+	<cmath>
+
+1631030008 c:\users\user\desktop\castle\college disted\subject sem\sem 7\prog paradigm\assignment 1\polar_complex_converter\submenus.h
+
+1631030315 source:c:\users\user\desktop\castle\college disted\subject sem\sem 7\prog paradigm\assignment 1\polar_complex_converter\submenus.cpp
+	"PolarCoord.h"
+	"ComplexNumber.h"
+	"SubMenus.h"
 	<iostream>
 	<cmath>
 
