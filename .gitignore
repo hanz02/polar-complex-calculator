@@ -2,3 +2,5 @@
 *.depend
 bin/
 obj/
+polar_complex_converter.depend
+polar_complex_converter.layout
