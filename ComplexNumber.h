@@ -11,7 +11,9 @@ class ComplexNumber
     public:
         ComplexNumber();
         ComplexNumber(double a, double b);
+
         PolarCoord ToPolarCoord();
+        bool is_equal(PolarCoord &pc_input);
 
         double getA();
         double getB();

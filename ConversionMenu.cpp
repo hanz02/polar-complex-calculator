@@ -1,16 +1,13 @@
 #include "PolarCoord.h"
 #include "ComplexNumber.h"
-#include "ConversionMenu.h"
+#include "SubMenus.h"
 
 #include <iostream>
 #include <cmath>
 
 using namespace std;
 
-ComplexNumber cn;
-PolarCoord pc;
-
-void conversionMenu(char &user_input)
+void conversionMenu(char &user_input, ComplexNumber &cn, PolarCoord &pc)
 {
     do
     {
@@ -64,6 +61,9 @@ void conversionMenu(char &user_input)
 
 void opt_to_polarCoord(double a, double b)
 {
+    ComplexNumber cn;
+    PolarCoord pc;
+
     cout << "\nEnter your complex number (a + bi) form for conversion \n";
     cout << "a: ";
     cin >> a;
@@ -105,6 +105,9 @@ void opt_to_polarCoord(double a, double b)
 
 void opt_to_complexNumber(double r, double deg)
 {
+    ComplexNumber cn;
+    PolarCoord pc;
+
     cout << "\nEnter your polar coordinate (r ¡Ï deg) for conversion \n";
     cout << "r (radius): ";
     cin >> r;

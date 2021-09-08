@@ -1,25 +1,25 @@
 # depslib dependency file v1.0
-1630860982 source:c:\users\user\desktop\castle\college disted\subject sem\sem 7\prog paradigm\assignment 1\polar_complex_converter\polarcoord.cpp
+1631097572 source:c:\users\user\desktop\castle\college disted\subject sem\sem 7\prog paradigm\assignment 1\polar_complex_converter\polarcoord.cpp
 	"PolarCoord.h"
 	"ComplexNumber.h"
 	<iostream>
 	<cmath>
 
-1630859789 c:\users\user\desktop\castle\college disted\subject sem\sem 7\prog paradigm\assignment 1\polar_complex_converter\polarcoord.h
+1631097638 c:\users\user\desktop\castle\college disted\subject sem\sem 7\prog paradigm\assignment 1\polar_complex_converter\polarcoord.h
 	"ComplexNumber.h"
 	<string>
 
-1630859796 c:\users\user\desktop\castle\college disted\subject sem\sem 7\prog paradigm\assignment 1\polar_complex_converter\complexnumber.h
+1631097677 c:\users\user\desktop\castle\college disted\subject sem\sem 7\prog paradigm\assignment 1\polar_complex_converter\complexnumber.h
 	"PolarCoord.h"
 	<string>
 
-1630862910 source:c:\users\user\desktop\castle\college disted\subject sem\sem 7\prog paradigm\assignment 1\polar_complex_converter\main.cpp
+1631097620 source:c:\users\user\desktop\castle\college disted\subject sem\sem 7\prog paradigm\assignment 1\polar_complex_converter\main.cpp
 	"ComplexNumber.h"
 	"PolarCoord.h"
-	"ConversionMenu.h"
+	"SubMenus.h"
 	<iostream>
 
-1630860922 source:c:\users\user\desktop\castle\college disted\subject sem\sem 7\prog paradigm\assignment 1\polar_complex_converter\complexnumber.cpp
+1631097917 source:c:\users\user\desktop\castle\college disted\subject sem\sem 7\prog paradigm\assignment 1\polar_complex_converter\complexnumber.cpp
 	"ComplexNumber.h"
 	"PolarCoord.h"
 	<iostream>
@@ -28,10 +28,19 @@
 
 1630941909 c:\users\user\desktop\castle\college disted\subject sem\sem 7\prog paradigm\assignment 1\polar_complex_converter\conversionmenu.h
 
-1630862831 source:c:\users\user\desktop\castle\college disted\subject sem\sem 7\prog paradigm\assignment 1\polar_complex_converter\conversionmenu.cpp
+1631030149 source:c:\users\user\desktop\castle\college disted\subject sem\sem 7\prog paradigm\assignment 1\polar_complex_converter\conversionmenu.cpp
 	"PolarCoord.h"
 	"ComplexNumber.h"
-	"ConversionMenu.h"
+	"SubMenus.h"
+	<iostream>
+	<cmath>
+
+1631030008 c:\users\user\desktop\castle\college disted\subject sem\sem 7\prog paradigm\assignment 1\polar_complex_converter\submenus.h
+
+1631097886 source:c:\users\user\desktop\castle\college disted\subject sem\sem 7\prog paradigm\assignment 1\polar_complex_converter\submenus.cpp
+	"PolarCoord.h"
+	"ComplexNumber.h"
+	"SubMenus.h"
 	<iostream>
 	<cmath>
 
