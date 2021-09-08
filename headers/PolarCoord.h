@@ -4,6 +4,7 @@
 #include "ComplexNumber.h"
 #include <string>
 
+enum MODE {RAD, DEG};
 class ComplexNumber;
 
 class PolarCoord
@@ -24,9 +25,15 @@ class PolarCoord
 
         std::string ToString();
 
+
+
     private:
         double r;
         double deg;
+
+
+
+
 
     friend class ComplexNumber;
 

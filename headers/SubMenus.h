@@ -7,5 +7,7 @@ void opt_to_complexNumber(double r, double deg);
 
 void equivalenceMenu(char &user_input);
 
+void displayMode(MODE current_mode);
+
 #endif //SUBMENU_H
 
