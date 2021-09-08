@@ -26,7 +26,7 @@ ComplexNumber PolarCoord::ToComplexNum() {
     return cn;
 }
 
-bool PolarCoord::operator==(PolarCoord const pc_input) {
+bool PolarCoord::operator==(PolarCoord const &pc_input) {
 
 
     double bigger = 0;
@@ -81,7 +81,6 @@ bool PolarCoord::operator==(PolarCoord const pc_input) {
         return false;
     }
 }
-
 
 double PolarCoord::getRadius()
 {

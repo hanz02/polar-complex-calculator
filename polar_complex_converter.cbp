@@ -36,10 +36,10 @@
 		</Compiler>
 		<Unit filename="ComplexNumber.cpp" />
 		<Unit filename="ComplexNumber.h" />
-		<Unit filename="ConversionMenu.cpp" />
-		<Unit filename="ConversionMenu.h" />
 		<Unit filename="PolarCoord.cpp" />
 		<Unit filename="PolarCoord.h" />
+		<Unit filename="SubMenus.cpp" />
+		<Unit filename="SubMenus.h" />
 		<Unit filename="main.cpp" />
 		<Extensions>
 			<lib_finder disable_auto="1" />

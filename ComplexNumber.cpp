@@ -40,6 +40,15 @@ PolarCoord ComplexNumber::ToPolarCoord() {
     return polarCoord;
 
 }
+bool ComplexNumber::is_equal(PolarCoord &pc_input) {
+    ComplexNumber cn_input = pc_input.ToComplexNum();
+
+    cn_input.setA(round(cn_input.getA()));
+    cn_input.setB(round(cn_input.getB()));
+
+    return true;
+
+}
 
 double ComplexNumber::getA() {
     return this->a;

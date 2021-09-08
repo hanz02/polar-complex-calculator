@@ -13,7 +13,9 @@ class PolarCoord
         PolarCoord(double r, double deg);
 
         ComplexNumber ToComplexNum();
-        bool operator==(PolarCoord const pc_input);
+
+        // it is legal to overload a operator twice IF AND ONLY IF they they have different parameters
+        bool operator==(PolarCoord const &pc_input);
 
         double getRadius();
         double getDegree();

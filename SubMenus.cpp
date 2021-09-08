@@ -217,6 +217,45 @@ void equivalenceMenu(char &user_input)
 
         // check polar coord and complex number equals
         case '2':
+            try
+            {
+
+                cout << "\nPlease enter a polar coordinate (r, deg) and a complex number (a + bi) to check if they are equal. \n\n";
+
+                cout << "--- Your Polar Coordinate --- \n";
+                cout << "r (radius): ";
+                cin >> r;
+                checkValidInputStream(cin);
+
+                pc.setRadius(r);
+
+                cout << "deg (degree angle): ";
+                cin >> deg;
+                checkValidInputStream(cin);
+                pc.setRadius(deg);
+
+
+                cout << "\n--- Your Complex Number --- \n";
+                cout << "a (real number): ";
+                cin >> a;
+                checkValidInputStream(cin);
+                cn.setA(a);
+
+                cout << "b (imaginary number): ";
+                cin >> b;
+                checkValidInputStream(cin);
+                cn.setB(b);
+
+                (cn.is_equal(pc)) ? cout << "\nThe two polar coordinates are equal\n" : cout << "The two polar coordinates are not equal \n";
+                system("pause");
+
+            }
+            catch (invalid_argument e)
+            {
+                cout << "\nInvalid input, please input a number\n";
+                system("pause");
+                cout << "\n=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=\n";
+            }
 
             break;
 

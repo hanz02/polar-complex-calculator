@@ -33,13 +33,13 @@ int main()
         case '1':
             cout << "\n=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=\n";
             conversionMenu(user_opt, cn, pc);
-            user_input = '0';
+            user_opt = '0';
             break;
 
         case '2':
         {
             equivalenceMenu(user_opt);
-            user_input = '0';
+            user_opt = '0';
             break;
         }
 
