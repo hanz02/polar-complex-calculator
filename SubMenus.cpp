@@ -276,4 +276,9 @@ void equivalenceMenu(char &user_input)
 
 }
 
+void displayMode(MODE current_mode)
+{
+    (current_mode == RAD) ? cout << "\t\t [In/Output Mode: RADIAN] \n" : cout << "\t\t [In/Output Mode: DEGREE] \n";
+}
+
 
