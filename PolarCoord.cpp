@@ -6,23 +6,26 @@
 
 using namespace std;
 
-PolarCoord::PolarCoord()
+PolarCoord::PolarCoord(MODE mode)
 {
     this->r = 0;
     this->deg = 0;
+    this->mode = mode;
 }
 
-PolarCoord::PolarCoord(double r, double deg)
+PolarCoord::PolarCoord(double r, double deg_rad, MODE mode)
 {
     this->r = r;
-    this->deg = deg;
+    (mode == RAD) ? this->rad = deg_rad : this->deg = deg_rad;
+    this->mode = mode;
 }
 
 ComplexNumber PolarCoord::ToComplexNum() {
-    ComplexNumber cn;
-    cn.a = this->r * cos(this->deg * M_PI / 180);
-    cn.b = this->r * sin(this->deg * M_PI / 180);
 
+    ComplexNumber cn;
+
+    cn.a = (this->mode == RAD) ? this->r * cos(this->rad) : this->r * cos(this->deg * M_PI / 180);
+    cn.b = (this->mode == RAD) ? this->r * sin(this->rad) : this->r * sin(this->deg * M_PI / 180);
     return cn;
 }
 
@@ -92,6 +95,16 @@ double PolarCoord::getDegree()
     return this->deg;
 }
 
+double PolarCoord::getRadian()
+{
+    return this->rad;
+}
+
+MODE PolarCoord::getMode()
+{
+    return this->mode;
+}
+
 void PolarCoord::setRadius(double r)
 {
     this->r = r;
@@ -100,6 +113,16 @@ void PolarCoord::setRadius(double r)
 void PolarCoord::setDegree(double deg)
 {
     this->deg = deg;
+}
+
+void PolarCoord::setRadian(double rad)
+{
+    this->rad = rad;
+}
+
+void PolarCoord::setMode(MODE mode)
+{
+    this->mode = mode;
 }
 
 string PolarCoord::ToString() {

@@ -19,12 +19,13 @@ void checkValidInputStream(istream &in) throw(invalid_argument)
 
 }
 
-void conversionMenu(char &user_input, ComplexNumber &cn, PolarCoord &pc)
+void conversionMenu(char &user_input, ComplexNumber &cn, PolarCoord &pc, MODE my_mode)
 {
     do
     {
 
-        cout << "\n\n====== CONVERSION ======\n";
+        cout << "\n\n====== CONVERSION ======";
+        displayMode(my_mode);
         cout << "\nChoose a conversion to perform below (Choose 1 to 3)\n\n";
         cout << "1. Complex Numbers to Polar Coordinates\n";
         cout << "2. Polar Coordinates to Complex Numbers\n";
@@ -35,13 +36,13 @@ void conversionMenu(char &user_input, ComplexNumber &cn, PolarCoord &pc)
 
         switch(user_input)
         {
-        // polar coord to complex number
+        // complex number to polar coord
         case '1':
 
             double a;
             double b;
 
-            opt_to_polarCoord(a, b);
+            opt_to_polarCoord(a, b, my_mode);
             user_input = '0';
 
             break;
@@ -52,7 +53,7 @@ void conversionMenu(char &user_input, ComplexNumber &cn, PolarCoord &pc)
             double r;
             double deg;
 
-            opt_to_complexNumber(r, deg);
+            opt_to_complexNumber(r, deg, my_mode);
             user_input = '0';
 
             break;
@@ -74,63 +75,26 @@ void conversionMenu(char &user_input, ComplexNumber &cn, PolarCoord &pc)
     while(user_input != '3');
 }
 
-void opt_to_polarCoord(double a, double b)
-{
-    try
-    {
-        ComplexNumber cn;
-        PolarCoord pc;
-
-        cout << "\nEnter your complex number (a + bi) form for conversion \n";
-        cout << "a: ";
-        cin >> a;
-
-        checkValidInputStream(cin);
-
-        cout << "b: ";
-        cin >> b;
-
-        checkValidInputStream(cin);
-
-        cn.setA(a);
-        cn.setB(b);
-
-        pc = cn.ToPolarCoord();
-
-        cout << "\nThe polar coordinate of " << a << " + " << b << "i is : " << pc.ToString() <<endl;
-        system("pause");
-        cout <<endl;
-        cout << "\n=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=\n";
-
-    }
-    catch (invalid_argument e)
-    {
-        cout << "\nInvalid input, please input a number\n";
-        system("pause");
-        cout << "\n=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=\n";
-    }
-}
-
-void opt_to_complexNumber(double r, double deg)
+void opt_to_complexNumber(double r, double deg,MODE my_mode)
 {
     ComplexNumber cn;
-    PolarCoord pc;
+    PolarCoord pc(my_mode);
 
     try
     {
-        cout << "\nEnter your polar coordinate (r ¡Ï deg) for conversion \n";
+        cout << "\nEnter your polar coordinate (r ¡Ï " << (my_mode == RAD ? "radian" : "degree")  << ") for conversion \n";
         cout << "r (radius): ";
         cin >> r;
 
         checkValidInputStream(cin);
 
-        cout << "deg (angular coordinate): ";
+        cout << (my_mode == RAD ? "radian" : "deg (angle degree)") << ": ";
         cin >> deg;
 
         checkValidInputStream(cin);
 
         pc.setRadius(r);
-        pc.setDegree(deg);
+        (my_mode == RAD ? pc.setRadian(deg) : pc.setDegree(deg));
 
         cn = pc.ToComplexNum();
 
@@ -150,18 +114,56 @@ void opt_to_complexNumber(double r, double deg)
 
 }
 
+void opt_to_polarCoord(double a, double b,MODE my_mode)
+{
+    try
+    {
+        ComplexNumber cn;
+        PolarCoord pc(my_mode);
+
+        cout << "\nEnter your complex number (a + bi) form for conversion \n";
+        cout << "a: ";
+        cin >> a;
+
+        checkValidInputStream(cin);
+
+        cout << "b: ";
+        cin >> b;
+
+        checkValidInputStream(cin);
+
+        cn.setA(a);
+        cn.setB(b);
+
+        pc = cn.ToPolarCoord(my_mode);
+
+        cout << "\nThe polar coordinate of " << a << " + " << b << "i is : " << pc.ToString() <<endl;
+        system("pause");
+        cout <<endl;
+        cout << "\n=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=\n";
+
+    }
+    catch (invalid_argument e)
+    {
+        cout << "\nInvalid input, please input a number\n";
+        system("pause");
+        cout << "\n=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=\n";
+    }
+}
 
 
-void equivalenceMenu(char &user_input)
+
+void equivalenceMenu(char &user_input, MODE my_mode)
 {
     ComplexNumber cn;
-    PolarCoord pc, pc1;
+    PolarCoord pc(my_mode), pc1(my_mode);
 
     double r, deg, a, b;
 
     do
     {
-        cout << "\n\n====== EQUIVALENCE CHECK ======\n";
+        cout << "\n\n====== EQUIVALENCE CHECK ======";
+        displayMode(my_mode);
         cout << "\nChoose an operation to perform below (Choose 1 to 3)\n\n";
         cout << "1. Check two equal Polar Coordinates\n";
         cout << "2. Check equivalence between Polar Coordinate and Complex Number\n";
@@ -278,7 +280,7 @@ void equivalenceMenu(char &user_input)
 
 void displayMode(MODE current_mode)
 {
-    (current_mode == RAD) ? cout << "\t\t [In/Output Mode: RADIAN] \n" : cout << "\t\t [In/Output Mode: DEGREE] \n";
+    (current_mode == RAD) ? cout << "\t\t[In/Output Mode: RADIAN] \n" : cout << "\t\t[In/Output Mode: DEGREE] \n";
 }
 
 

@@ -6,15 +6,16 @@
 
 using namespace std;
 
+MODE my_mode = RAD;
+
 ComplexNumber cn;
-PolarCoord pc;
+PolarCoord pc(my_mode);
 
 void IOChangeMenu(MODE &current_mode);
 
 int main()
 {
     cout << "====== Welcome to my Complex Number and Polar Coordinates Calculator ======\n";
-    MODE my_mode = RAD;
 
     char user_opt = '0';
 
@@ -36,13 +37,13 @@ int main()
         // conversion
         case '1':
             cout << "\n=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=\n";
-            conversionMenu(user_opt, cn, pc);
+            conversionMenu(user_opt, cn, pc, my_mode);
             user_opt = '0';
             break;
 
         case '2':
         {
-            equivalenceMenu(user_opt);
+            equivalenceMenu(user_opt,my_mode);
             user_opt = '0';
             break;
         }

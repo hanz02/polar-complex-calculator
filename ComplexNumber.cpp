@@ -19,9 +19,9 @@ ComplexNumber::ComplexNumber(double a, double b)
     this->b = b;
 }
 
-PolarCoord ComplexNumber::ToPolarCoord() {
+PolarCoord ComplexNumber::ToPolarCoord(MODE my_mode) {
 
-    PolarCoord polarCoord;
+    PolarCoord polarCoord(my_mode);
 
     //* calculate for r (magnitude)
     polarCoord.r = sqrt(pow(this->a, 2) + pow(this->b, 2));
