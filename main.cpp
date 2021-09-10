@@ -3,6 +3,7 @@
 #include "SubMenus.h"
 
 #include <iostream>
+#include <limits>
 
 using namespace std;
 
@@ -61,6 +62,7 @@ int main()
             cout << "\n====== Thank You for using the calculator ====== \n";
             break;
         default:
+            clearInputStream(cin);
             cout << "\nIncorrect Option Specified (Please choose option 1 to 2) \n";
             system("pause");
             cout << "\n=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=\n";
@@ -101,6 +103,8 @@ void IOChangeMenu(MODE &current_mode)
         break;
 
     default:
+        cin.clear();
+        cin.ignore(numeric_limits<streamsize>::max(),'\n');
         cout << "\nInvalid input, please input a number\n";
         system("pause");
 

@@ -9,5 +9,7 @@ void equivalenceMenu(char &user_input, MODE my_mode);
 
 void displayMode(MODE current_mode);
 
+void clearInputStream(std::istream &in);
+
 #endif //SUBMENU_H
 

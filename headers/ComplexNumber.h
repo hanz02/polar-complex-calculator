@@ -4,7 +4,6 @@
 #include "PolarCoord.h"
 #include <string>
 
-enum MODE {RAD, DEG};
 class PolarCoord;
 
 class ComplexNumber

@@ -1,10 +1,9 @@
 #ifndef POLARCOORD_H
 #define POLARCOORD_H
 
-#include "ComplexNumber.h"
-#include "PolarCoord.h"
 #include <string>
 
+enum MODE {RAD, DEG};
 class ComplexNumber;
 
 class PolarCoord

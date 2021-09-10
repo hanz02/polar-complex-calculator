@@ -27,26 +27,30 @@ PolarCoord ComplexNumber::ToPolarCoord(MODE my_mode) {
     polarCoord.r = sqrt(pow(this->a, 2) + pow(this->b, 2));
 
     //* calculate for deg (degree from x-axis or East)
-    polarCoord.deg = atan(this->b / this->a);
-    polarCoord.deg = polarCoord.deg * 180 / M_PI; //* turn radian to degree
-
-
-    if (this-> a < 0)
+    if(my_mode == DEG)
     {
-         polarCoord.deg += 180;
+        polarCoord.deg = atan(this->b / this->a);
+        polarCoord.deg = polarCoord.deg * 180 / M_PI; //* turn radian to degree
 
+        if(this-> a < 0)
+        {
+             polarCoord.deg += 180;
+
+        }
+
+    } else
+    {
+        polarCoord.rad = atan(this->b / this->a);
     }
 
     return polarCoord;
 
 }
-bool ComplexNumber::is_equal(PolarCoord &pc_input) {
-    ComplexNumber cn_input = pc_input.ToComplexNum();
+bool ComplexNumber::is_equal(PolarCoord &pc_input)
+{
+    PolarCoord pc = this->ToPolarCoord(pc_input.mode);
 
-    cn_input.setA(round(cn_input.getA()));
-    cn_input.setB(round(cn_input.getB()));
-
-    return true;
+    return (pc == pc_input);
 
 }
 

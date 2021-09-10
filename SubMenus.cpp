@@ -4,16 +4,22 @@
 
 #include <iostream>
 #include <cmath>
+#include <limits>
 
 using namespace std;
+
+void clearInputStream(istream &in)
+{
+    cin.clear();
+    cin.ignore(numeric_limits<streamsize>::max(),'\n');
+}
 
 void checkValidInputStream(istream &in) throw(invalid_argument)
 {
 
-    if(cin.fail()) // or if(cin.fail()), if user typed wrong input
+    if(in.fail()) // or if(cin.fail()), if user typed wrong input
     {
-        cin.clear();
-        cin.ignore();
+        clearInputStream(cin);
         throw invalid_argument("Inavlid Input Provided, please input the correct data type");
     }
 
@@ -60,11 +66,11 @@ void conversionMenu(char &user_input, ComplexNumber &cn, PolarCoord &pc, MODE my
 
         case '3':
             cout << "\nReturning to MAIN MENU.." <<endl;
-            system("pause");
             cout << "\n=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=\n";
             break;
 
         default:
+            clearInputStream(cin);
             cout << "\nIncorrect Option Specified (Please choose option 1 to 2) \n";
             system("pause");
             user_input = '0';
@@ -73,6 +79,44 @@ void conversionMenu(char &user_input, ComplexNumber &cn, PolarCoord &pc, MODE my
         }
     }
     while(user_input != '3');
+}
+
+
+
+void opt_to_polarCoord(double a, double b,MODE my_mode)
+{
+    try
+    {
+        ComplexNumber cn;
+        PolarCoord pc(my_mode);
+
+        cout << "\nEnter your complex number (a + bi) form for conversion \n";
+        cout << "a: ";
+        cin >> a;
+
+        checkValidInputStream(cin);
+
+        cout << "b: ";
+        cin >> b;
+
+        checkValidInputStream(cin);
+
+        cn.setA(a);
+        cn.setB(b);
+
+        pc = cn.ToPolarCoord(my_mode);
+
+        cout << "\nThe polar coordinate of " << a << " + " << b << "i is : " << pc.ToString() << "\n";
+        system("pause");
+        cout << "\n=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=\n";
+
+    }
+    catch (invalid_argument e)
+    {
+        cout << "\nInvalid input, please input a number\n";
+        system("pause");
+        cout << "\n=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=\n";
+    }
 }
 
 void opt_to_complexNumber(double r, double deg,MODE my_mode)
@@ -114,44 +158,6 @@ void opt_to_complexNumber(double r, double deg,MODE my_mode)
 
 }
 
-void opt_to_polarCoord(double a, double b,MODE my_mode)
-{
-    try
-    {
-        ComplexNumber cn;
-        PolarCoord pc(my_mode);
-
-        cout << "\nEnter your complex number (a + bi) form for conversion \n";
-        cout << "a: ";
-        cin >> a;
-
-        checkValidInputStream(cin);
-
-        cout << "b: ";
-        cin >> b;
-
-        checkValidInputStream(cin);
-
-        cn.setA(a);
-        cn.setB(b);
-
-        pc = cn.ToPolarCoord(my_mode);
-
-        cout << "\nThe polar coordinate of " << a << " + " << b << "i is : " << pc.ToString() <<endl;
-        system("pause");
-        cout <<endl;
-        cout << "\n=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=\n";
-
-    }
-    catch (invalid_argument e)
-    {
-        cout << "\nInvalid input, please input a number\n";
-        system("pause");
-        cout << "\n=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=\n";
-    }
-}
-
-
 
 void equivalenceMenu(char &user_input, MODE my_mode)
 {
@@ -178,7 +184,7 @@ void equivalenceMenu(char &user_input, MODE my_mode)
         case '1':
             try
             {
-                cout << "\nPlease enter two polar coordinate (r, deg) to check if they are equal. \n\n";
+                cout << "\nPlease enter two polar coordinate (r, "<< (my_mode == RAD ? "radian" : "degree") <<") to check if they are equal. \n\n";
 
                 cout << "--- 1st Coordinate --- \n";
                 cout << "r (radius): ";
@@ -187,10 +193,10 @@ void equivalenceMenu(char &user_input, MODE my_mode)
 
                 pc.setRadius(r);
 
-                cout << "deg (degree angle): ";
+                cout << (my_mode == RAD ? "Radian" : "Angle Degree") << ": ";
                 cin >> deg;
                 checkValidInputStream(cin);
-                pc.setRadius(deg);
+                (my_mode == RAD ? pc.setRadian(deg) : pc.setDegree(deg));
 
                 cout << "\n--- 2nd Coordinate --- \n";
                 cout << "r (radius): ";
@@ -198,10 +204,10 @@ void equivalenceMenu(char &user_input, MODE my_mode)
                 checkValidInputStream(cin);
                 pc1.setRadius(r);
 
-                cout << "deg (degree angle): ";
+                cout << (my_mode == RAD ? "Radian" : "Angle Degree") << ": ";
                 cin >> deg;
                 checkValidInputStream(cin);
-                pc1.setRadius(deg);
+                (my_mode == RAD ? pc1.setRadian(deg) : pc1.setDegree(deg));
 
                 (pc1 == pc) ? cout << "\nThe two polar coordinates are equal\n" : cout << "The two polar coordinates are not equal \n";
                 system("pause");
@@ -222,7 +228,7 @@ void equivalenceMenu(char &user_input, MODE my_mode)
             try
             {
 
-                cout << "\nPlease enter a polar coordinate (r, deg) and a complex number (a + bi) to check if they are equal. \n\n";
+                cout << "\nPlease enter a polar coordinate (r, "<< (my_mode == RAD ? "radian" : "degree") <<") and a complex number (a + bi) to check if they are equal. \n\n";
 
                 cout << "--- Your Polar Coordinate --- \n";
                 cout << "r (radius): ";
@@ -231,10 +237,10 @@ void equivalenceMenu(char &user_input, MODE my_mode)
 
                 pc.setRadius(r);
 
-                cout << "deg (degree angle): ";
+                cout << (my_mode == RAD ? "Radian" : "Angle Degree") << ": ";
                 cin >> deg;
                 checkValidInputStream(cin);
-                pc.setRadius(deg);
+                (my_mode == RAD ? pc.setRadian(deg) : pc.setDegree(deg));
 
 
                 cout << "\n--- Your Complex Number --- \n";
@@ -268,6 +274,7 @@ void equivalenceMenu(char &user_input, MODE my_mode)
             break;
 
         default:
+            clearInputStream(cin);
             cout << "\nIncorrect Option Specified (Please choose option 1 to 3) \n";
             system("pause");
             cout << "\n=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=\n";
