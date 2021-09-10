@@ -1,7 +1,6 @@
 #ifndef POLARCOORD_H
 #define POLARCOORD_H
 
-#include "ComplexNumber.h"
 #include <string>
 
 enum MODE {RAD, DEG};
@@ -10,8 +9,8 @@ class ComplexNumber;
 class PolarCoord
 {
     public:
-        PolarCoord();
-        PolarCoord(double r, double deg);
+        PolarCoord(MODE mode);
+        PolarCoord(double r, double deg_rad, MODE mode);
 
         ComplexNumber ToComplexNum();
 
@@ -20,20 +19,21 @@ class PolarCoord
 
         double getRadius();
         double getDegree();
+        double getRadian();
+        MODE getMode();
+
         void setRadius(double r);
         void setDegree(double deg);
+        void setRadian(double rad);
+        void setMode(MODE mode);
 
         std::string ToString();
-
-
 
     private:
         double r;
         double deg;
-
-
-
-
+        double rad;
+        MODE mode;
 
     friend class ComplexNumber;
 

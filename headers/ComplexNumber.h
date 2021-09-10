@@ -12,7 +12,7 @@ class ComplexNumber
         ComplexNumber();
         ComplexNumber(double a, double b);
 
-        PolarCoord ToPolarCoord();
+        PolarCoord ToPolarCoord(MODE my_mode);
         bool is_equal(PolarCoord &pc_input);
 
         double getA();
