@@ -29,6 +29,12 @@ class PolarCoord
 
         std::string ToString();
 
+        // arithmetic operators overloading
+        PolarCoord operator+ (PolarCoord pc_input);
+        PolarCoord operator- (PolarCoord pc_input);
+        PolarCoord operator* (PolarCoord pc_input);
+        PolarCoord operator/ (PolarCoord pc_input);
+
     private:
         double r;
         double deg;
