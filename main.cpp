@@ -1,6 +1,7 @@
 #include "ComplexNumber.h"
 #include "PolarCoord.h"
 #include "SubMenus.h"
+#include "ArithmeticOptMenu.h"
 
 #include <iostream>
 #include <limits>
@@ -27,8 +28,10 @@ int main()
         cout << "\nChoose an operation to perform below (Choose 1 to 3)\n\n";
         cout << "1. Polar Coordinates & Complex Numbers Conversion \n";
         cout << "2. Polar Coordinates Equality Check \n";
-        cout << "3. Change In/Output Mode (RADIAN / DEGREE)\n";
-        cout << "4. Exit\n";
+        cout << "3. Complex Numbers Arithmetic Operations \n";
+        cout << "4. Polar Coordinates Arithmetic Operations \n\n";
+        cout << "5. Change In/Output Mode (RADIAN / DEGREE)\n";
+        cout << "6. Exit\n";
 
         cout << "\n> ";
         cin >> user_opt;
@@ -51,6 +54,20 @@ int main()
 
         case '3':
         {
+            ComplexNumberArithmeticMenu();
+            break;
+        }
+
+        case '4':
+        {
+            cout << "\n=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=\n";
+            IOChangeMenu(my_mode);
+            cout << "\n=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=\n";
+            break;
+        }
+
+        case '5':
+        {
             cout << "\n=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=\n";
             IOChangeMenu(my_mode);
             cout << "\n=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=\n";
@@ -58,7 +75,7 @@ int main()
         }
 
         // exit program
-        case '4':
+        case '6':
             cout << "\n====== Thank You for using the calculator ====== \n";
             break;
         default:
@@ -70,7 +87,7 @@ int main()
         }
 
     }
-    while (user_opt != '4');
+    while (user_opt != '6');
 
     return 0;
 }

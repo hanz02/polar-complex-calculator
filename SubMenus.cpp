@@ -6,6 +6,7 @@
 #include <cmath>
 #include <limits>
 
+
 using namespace std;
 
 void clearInputStream(istream &in)
@@ -91,12 +92,12 @@ void opt_to_polarCoord(double a, double b,MODE my_mode)
         PolarCoord pc(my_mode);
 
         cout << "\nEnter your complex number (a + bi) form for conversion \n";
-        cout << "a: ";
+        cout << "a (real number): ";
         cin >> a;
 
         checkValidInputStream(cin);
 
-        cout << "b: ";
+        cout << "b (imaginary number): ";
         cin >> b;
 
         checkValidInputStream(cin);

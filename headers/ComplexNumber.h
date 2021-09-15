@@ -22,6 +22,12 @@ class ComplexNumber
 
         std::string ToString();
 
+        // arithmetic operators overloading
+        ComplexNumber operator+ (ComplexNumber cn_input);
+        ComplexNumber operator- (ComplexNumber cn_input);
+        ComplexNumber operator* (ComplexNumber cn_input);
+        ComplexNumber operator/ (ComplexNumber cn_input);
+
     private:
         double a;
         double b;

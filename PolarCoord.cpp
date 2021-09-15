@@ -3,6 +3,8 @@
 
 #include <iostream>
 #include <cmath>
+#include <iomanip>
+#include <sstream>
 
 using namespace std;
 
@@ -173,7 +175,19 @@ void PolarCoord::setMode(MODE mode)
 }
 
 string PolarCoord::ToString() {
-    return to_string(this->r) + ", " + to_string(this->deg);
+
+    stringstream stream;
+    stream << fixed << setprecision(4) << this->r;
+    string out_r = stream.str();
+    stream.str("");
+    stream.clear();
+
+    stream << fixed << setprecision(4) << (this->mode == RAD ? this->rad : this->deg);
+    string out_degRad = stream.str();
+    stream.str("");
+    stream.clear();
+
+    return "(" + out_r + ", " + out_degRad + ")";
 }
 
 

@@ -4,6 +4,7 @@
 #include <iostream>
 #include <cmath>
 #include <iomanip>
+#include <sstream>
 
 using namespace std;
 
@@ -71,5 +72,74 @@ void ComplexNumber::setB(double b) {
 }
 
 string ComplexNumber::ToString() {
-    return to_string(this->a) + " + " + to_string(this->b) + "i";
+
+    stringstream stream;
+    stream << setprecision(4) << this->a;
+    string out_a = stream.str();
+    stream.str("");
+    stream.clear();
+
+    stream << setprecision(4) << (this->b < 0 ? abs(this->b) : this->b);
+    string out_b = stream.str();
+    stream.str("");
+    stream.clear();
+
+    string result;
+
+    // if the result (a + bi) where b = 0, we know it's a real number.
+    // Then we can just output the 'a' and ignore 'bi'
+    if(this->b == 0)
+    {
+        return out_a;
+    }
+    // displaying string of form (a - bi) where b is less than 0
+    else if(this->b < 0)
+    {
+        // return string (a - i) where if b = -1
+        return (this->b == -1 ? "(" + out_a + " - i)" : "(" + out_a + " - " + out_b + "i)");
+    }
+    // displaying string of form (a + i) where b is less than 0
+    else
+    {
+        // return string (a + i) where if b = 1
+        return (this->b == 1 ? "(" + out_a + " + i)" : "(" + out_a + " + " + out_b + "i)");
+    }
+
+}
+
+// arithmetic operators overloading
+ComplexNumber ComplexNumber::operator+ (ComplexNumber cn_input)
+{
+    ComplexNumber cn_output;
+    cn_output.setA(cn_input.a + this->a);
+    cn_output.setB(cn_input.b + this->b);
+
+    return cn_output;
+}
+
+ComplexNumber ComplexNumber::operator- (ComplexNumber cn_input)
+{
+    ComplexNumber cn_output;
+    cn_output.setA(this->a - cn_input.a);
+    cn_output.setB(this->b - cn_input.b);
+
+    return cn_output;
+}
+
+ComplexNumber ComplexNumber::operator* (ComplexNumber cn_input)
+{
+    ComplexNumber cn_output;
+    cn_output.setA(this->a * cn_input.a - this->b * cn_input.b);
+    cn_output.setB(this->a * cn_input.b + this->b * cn_input.a);
+
+    return cn_output;
+}
+
+ComplexNumber ComplexNumber::operator/ (ComplexNumber cn_input)
+{
+    ComplexNumber cn_output;
+    cn_output.setA((this->a * cn_input.a + this->b * cn_input.b)/ (pow(cn_input.a, 2) + pow(cn_input.b, 2)));
+    cn_output.setB((this->b * cn_input.a - this->a * cn_input.b)/ (pow(cn_input.a, 2) + pow(cn_input.b, 2)));
+
+    return cn_output;
 }
