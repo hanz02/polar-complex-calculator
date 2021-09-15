@@ -34,9 +34,11 @@
 			<Add option="-Wall" />
 			<Add option="-fexceptions" />
 		</Compiler>
+		<Unit filename="ArithmeticOptMenu.cpp" />
 		<Unit filename="ComplexNumber.cpp" />
 		<Unit filename="PolarCoord.cpp" />
 		<Unit filename="SubMenus.cpp" />
+		<Unit filename="headers/ArithmeticOptMenu.h" />
 		<Unit filename="headers/ComplexNumber.h" />
 		<Unit filename="headers/PolarCoord.h" />
 		<Unit filename="headers/SubMenus.h" />
