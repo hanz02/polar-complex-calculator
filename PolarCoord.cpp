@@ -191,3 +191,46 @@ string PolarCoord::ToString() {
 }
 
 
+// arithmetic operators overloading
+PolarCoord PolarCoord::operator+ (PolarCoord pc_input)
+{
+    PolarCoord pc_output(this->mode);
+    ComplexNumber cn_temp = this->ToComplexNum() + pc_input.ToComplexNum();
+
+    pc_output = cn_temp.ToPolarCoord(this->mode);
+
+    return pc_output;
+
+}
+
+PolarCoord PolarCoord::operator- (PolarCoord pc_input)
+{
+    PolarCoord pc_output(this->mode);
+    ComplexNumber cn_temp = this->ToComplexNum() - pc_input.ToComplexNum();
+
+    pc_output = cn_temp.ToPolarCoord(this->mode);
+
+    return pc_output;
+}
+
+PolarCoord PolarCoord::operator* (PolarCoord pc_input)
+{
+    PolarCoord pc_output(this->mode);
+    pc_output.setRadius(this->r * pc_input.r);
+
+    (this->mode == RAD) ? pc_output.setRadian(this->r + pc_input.r) : pc_output.setDegree(this->deg + pc_input.deg);
+
+
+    return pc_output;
+}
+
+PolarCoord PolarCoord::operator/ (PolarCoord pc_input)
+{
+    PolarCoord pc_output(this->mode);
+    pc_output.setRadius(this->r / pc_input.r);
+    (this->mode == RAD) ? pc_output.setRadian(this->r - pc_input.r) : pc_output.setDegree(this->deg - pc_input.deg);
+
+    return pc_output;
+}
+
+
