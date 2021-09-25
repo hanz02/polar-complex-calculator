@@ -8,7 +8,7 @@
 
 using namespace std;
 
-MODE my_mode = RAD;
+MODE my_mode = DEG;
 
 ComplexNumber cn;
 PolarCoord pc(my_mode);
@@ -60,9 +60,9 @@ int main()
 
         case '4':
         {
-            cout << "\n=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=\n";
-            IOChangeMenu(my_mode);
-            cout << "\n=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=\n";
+
+            PolarCoordArithmeticMenu(my_mode);
+
             break;
         }
 
