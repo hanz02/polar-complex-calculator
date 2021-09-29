@@ -255,7 +255,7 @@ void equivalenceMenu(char &user_input, MODE my_mode)
                 checkValidInputStream(cin);
                 cn.setB(b);
 
-                (cn.is_equal(pc)) ? cout << "\nThe two polar coordinates are equal\n" : cout << "The two polar coordinates are not equal \n";
+                (cn.is_equal(pc)) ? cout << "\nThe two polar coordinates are equal\n" : cout << "\nThe two polar coordinates are not equal \n";
                 system("pause");
 
             }

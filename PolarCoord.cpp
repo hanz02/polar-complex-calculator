@@ -197,6 +197,7 @@ PolarCoord PolarCoord::operator+ (PolarCoord pc_input)
     PolarCoord pc_output(this->mode);
     ComplexNumber cn_temp = this->ToComplexNum() + pc_input.ToComplexNum();
 
+
     pc_output = cn_temp.ToPolarCoord(this->mode);
 
     return pc_output;
