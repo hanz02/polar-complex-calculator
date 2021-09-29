@@ -1,7 +1,7 @@
-#include "ComplexNumber.h"
-#include "PolarCoord.h"
-#include "SubMenus.h"
-#include "ArithmeticOptMenu.h"
+#include "headers/ComplexNumber.h"
+#include "headers/PolarCoord.h"
+#include "headers/SubMenus.h"
+#include "headers/ArithmeticOptMenu.h"
 
 #include <iostream>
 #include <limits>

@@ -1,5 +1,5 @@
-#include "ComplexNumber.h"
-#include "PolarCoord.h"
+#include "headers/ComplexNumber.h"
+#include "headers/PolarCoord.h"
 
 #include <iostream>
 #include <cmath>

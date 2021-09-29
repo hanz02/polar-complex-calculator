@@ -1,6 +1,6 @@
-#include "PolarCoord.h"
-#include "ComplexNumber.h"
-#include "SubMenus.h"
+#include "headers/PolarCoord.h"
+#include "headers/ComplexNumber.h"
+#include "headers/SubMenus.h"
 
 #include <iostream>
 #include <cmath>
