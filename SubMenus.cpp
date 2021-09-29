@@ -210,7 +210,7 @@ void equivalenceMenu(char &user_input, MODE my_mode)
                 checkValidInputStream(cin);
                 (my_mode == RAD ? pc1.setRadian(deg) : pc1.setDegree(deg));
 
-                (pc1 == pc) ? cout << "\nThe two polar coordinates are equal\n" : cout << "The two polar coordinates are not equal \n";
+                (pc1 == pc) ? cout << "\nThe two polar coordinates are equal\n" : cout << "\nThe two polar coordinates are not equal \n";
                 system("pause");
                 cout << "\n=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=\n";
 
